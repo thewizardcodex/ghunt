@@ -30,11 +30,9 @@ class GHuntCreds(SmartObj):
         self.android: AndroidCreds = AndroidCreds()
 
         if not creds_path:
-            cwd_path = Path().home()
+            cwd_path = Path().cwd()
             ghunt_folder = cwd_path / ".malfrats/ghunt"
-            if not ghunt_folder.is_dir():
-                ghunt_folder.mkdir(parents=True, exist_ok=True)
-            creds_path = ghunt_folder / "creds.m"
+            creds_path = cwd_path / "creds.m"
         self.creds_path: str = creds_path
 
     def are_creds_loaded(self) -> bool:
